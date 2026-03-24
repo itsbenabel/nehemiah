@@ -194,6 +194,9 @@ h4 {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .notice-banner a {
   color: var(--cream);
@@ -448,7 +451,7 @@ h4 {
   display: flex;
   gap: 0;
   white-space: nowrap;
-  animation: marquee-scroll 22s linear infinite;
+  animation: marquee-scroll 12s linear infinite;
 }
 
 .marquee-section__item {
@@ -2427,7 +2430,7 @@ h4 {
     aspect-ratio: 4/3;
   }
   .hero__image-col::before { display: none; }
-  .hero__content { padding-right: 0; padding-block: 3rem; }
+  .hero__content { padding-inline: 1.5rem; padding-block: 3rem; }
   .hero__stacked .line-display { font-size: clamp(3rem, 16vw, 6rem); }
 
   .about-split { grid-template-columns: 1fr; gap: 2rem; }
