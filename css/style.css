@@ -215,6 +215,7 @@ h4 {
   background: var(--cream);
   box-shadow: 0 1px 0 rgba(0,0,0,0.08), var(--shadow-sm);
   height: var(--nav-h);
+  isolation: isolate;
 }
 
 .navbar__inner {
@@ -451,7 +452,7 @@ h4 {
   display: flex;
   gap: 0;
   white-space: nowrap;
-  animation: marquee-scroll 12s linear infinite;
+  animation: marquee-scroll 7s linear infinite;
 }
 
 .marquee-section__item {
@@ -2405,8 +2406,8 @@ h4 {
 @media (max-width: 768px) {
   .navbar__nav {
     display: none;
-    position: fixed;
-    top: var(--nav-h);
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
     background: var(--cream);
@@ -2430,8 +2431,8 @@ h4 {
     aspect-ratio: 4/3;
   }
   .hero__image-col::before { display: none; }
-  .hero__content { padding-inline: 1.5rem; padding-block: 3rem; }
-  .hero__stacked .line-display { font-size: clamp(3rem, 16vw, 6rem); }
+  .hero__content { padding-inline: 1.25rem; padding-block: 3rem; overflow: hidden; }
+  .hero__stacked .line-display { font-size: clamp(2.5rem, 11vw, 5rem); }
 
   .about-split { grid-template-columns: 1fr; gap: 2rem; }
   .sermons-grid { grid-template-columns: 1fr; }
@@ -2458,7 +2459,7 @@ h4 {
   .doctrine-grid { grid-template-columns: 1fr; }
   .stats-strip__inner { grid-template-columns: 1fr; }
   .hero__actions { flex-direction: column; align-items: flex-start; }
-  .hero__stacked .line-display { font-size: clamp(2.75rem, 18vw, 5rem); }
+  .hero__stacked .line-display { font-size: clamp(2.25rem, 10.5vw, 4.5rem); }
   .event-card { grid-template-columns: 1fr; }
   .event-card__date { width: fit-content; }
   .booking-intro-grid { grid-template-columns: 1fr; }
