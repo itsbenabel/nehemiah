@@ -639,6 +639,21 @@ h4 {
 }
 .sermon-card__thumb--2 { background: linear-gradient(135deg, #0d4a72 0%, #1A6FA8 100%); }
 .sermon-card__thumb--3 { background: linear-gradient(135deg, #1A2332 0%, #2d7db5 100%); }
+.sermon-card__thumb--placeholder { background: rgba(247,246,240,0.06); }
+
+.sermon-card--loading .sermon-card__body { padding: 1.25rem; }
+.sermon-skeleton {
+  height: 14px;
+  background: rgba(247,246,240,0.08);
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+.sermon-skeleton--short { width: 55%; }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
 
 .sermon-card__thumb-text {
   position: absolute;
@@ -1595,6 +1610,23 @@ h4 {
   align-items: start;
 }
 
+.partner-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.partner-card__label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+
 .partner-card {
   background: #fff;
   border: 1.5px solid rgba(3,2,11,0.1);
@@ -1671,6 +1703,10 @@ h4 {
 .partner-benefits li {
   font-size: 0.83rem;
   color: var(--body-text);
+}
+
+.vm-card .partner-benefits li {
+  color: rgba(247,246,240,0.8);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1693,6 +1729,12 @@ h4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
+}
+
+.give-methods--two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 820px;
+  margin: 0 auto;
 }
 
 .give-method {
