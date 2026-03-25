@@ -452,7 +452,15 @@ h4 {
   display: flex;
   gap: 0;
   white-space: nowrap;
-  animation: marquee-scroll 7s linear infinite;
+  animation: marquee-scroll 12s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .marquee-section__track { animation-duration: 16s; }
+}
+
+@media (min-width: 1024px) {
+  .marquee-section__track { animation-duration: 20s; }
 }
 
 .marquee-section__item {
