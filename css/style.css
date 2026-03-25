@@ -2520,8 +2520,13 @@ h4 {
   .principles-grid    { grid-template-columns: 1fr; }
   .partner-grid       { grid-template-columns: 1fr; }
   .give-methods       { grid-template-columns: 1fr; }
-  .contact-grid       { grid-template-columns: 1fr; }
+  .contact-grid       { grid-template-columns: 1fr; gap: 1.5rem; }
   .speaking-block     { grid-template-columns: 1fr; }
   .speaking-block__image { display: none; }
   .podcast-layout     { grid-template-columns: 1fr; }
+
+  .section            { padding-block: 3rem; }
+  .container          { padding-inline: 1rem; }
+  .contact-info-card  { padding: 1rem; }
+  .prayer-box         { padding: 1.5rem 1rem; }
 }
