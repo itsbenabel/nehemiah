@@ -423,32 +423,15 @@
 
   <script>
     (function () {
-      const CHANNEL_ID = 'UCfMbCmbWrchtewC87T5xVtQ';
-      const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
-      const PROXY = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=3`;
-
       function formatDate(dateStr) {
         const d = new Date(dateStr);
         return d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
       }
 
-      function videoIdFromUrl(url) {
-        const m = url.match(/[?&]v=([^&]+)/) || url.match(/youtu\.be\/([^?]+)/);
-        return m ? m[1] : null;
-      }
-
-      function buildCard(item) {
-        const videoId = videoIdFromUrl(item.link);
-        const thumb = videoId
-          ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
-          : '';
-        const watchUrl = item.link;
-        const title = item.title;
-        const date = formatDate(item.pubDate);
-
+      function buildCard(video) {
         return `
           <article class="sermon-card">
-            <a href="${watchUrl}" target="_blank" rel="noopener" class="sermon-card__thumb" aria-label="Watch on YouTube" style="background-image:url('${thumb}');background-size:cover;background-position:center;">
+            <a href="${video.url}" target="_blank" rel="noopener" class="sermon-card__thumb" aria-label="Watch on YouTube" style="background-image:url('${video.thumbnail}');background-size:cover;background-position:center;">
               <div class="sermon-card__play">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </div>
@@ -456,24 +439,21 @@
             <div class="sermon-card__body">
               <div class="sermon-card__meta">
                 <span class="sermon-card__tag">Teaching</span>
-                <span>${date}</span>
+                <span>${formatDate(video.published)}</span>
               </div>
-              <h3>${title}</h3>
-              <a href="${watchUrl}" target="_blank" rel="noopener" class="btn btn--outline">Watch Now</a>
+              <h3>${video.title}</h3>
+              <a href="${video.url}" target="_blank" rel="noopener" class="btn btn--outline">Watch Now</a>
             </div>
           </article>`;
       }
 
-      fetch(PROXY)
+      fetch('/api/youtube')
         .then(r => r.json())
         .then(data => {
-          if (data.status !== 'ok' || !data.items || !data.items.length) return;
-          const grid = document.getElementById('sermons-grid');
-          grid.innerHTML = data.items.slice(0, 3).map(buildCard).join('');
+          if (!data.videos || !data.videos.length) return;
+          document.getElementById('sermons-grid').innerHTML = data.videos.map(buildCard).join('');
         })
-        .catch(() => {
-          // On failure, leave skeleton cards in place — they still link to the channel
-        });
+        .catch(() => {});
     })();
   </script>
 
